@@ -16,9 +16,9 @@
         </commentGenerator>
         <!--需要配置数据库连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://47.99.217.209:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/cloud?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true"
                         userId="root"
-                        password="root">
+                        password="123">
         </jdbcConnection>
 
         <javaTypeResolver>
