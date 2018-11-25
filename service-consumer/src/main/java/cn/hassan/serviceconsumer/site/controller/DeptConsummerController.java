@@ -1,27 +1,29 @@
-package cn.hassan.serviceprovider.site.controller;
+package cn.hassan.serviceconsumer.site.controller;
 
 import cn.hassan.entities.Dept;
-import cn.hassan.serviceprovider.site.service.DeptService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class DeptController {
+public class DeptConsummerController {
 
     @Autowired
-    private DeptService deptService;
+    private RestTemplate restTemplate;
 
-    @ApiOperation(value="获取部门详细信息")
-    @ApiImplicitParams({
+    @ApiOperation(value = "consumer 获取部门信息")
+    @ApiImplicitParams(
             @ApiImplicitParam(name = "id", value = "部门ID", required = true, dataType = "Long", paramType = "path")
-    })
-    @RequestMapping(value="/dept/findDept/{id}")
-    public Dept findDeptById(@PathVariable Long id) {
-        return deptService.findDeptById(id);
+    )
+    @RequestMapping(value = "/consumer/findDept/{id}")
+    public ResponseEntity<Dept> findDeptById(@PathVariable Long id) {
+        return restTemplate.getForEntity("http://127.0.0.1:8080/dept/findDept/" + id, Dept.class);
     }
+
 }
