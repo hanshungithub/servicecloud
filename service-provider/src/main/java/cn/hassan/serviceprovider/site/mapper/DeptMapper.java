@@ -1,4 +1,4 @@
-package cn.hassan.serviceprovider.mapper;
+package cn.hassan.serviceprovider.site.mapper;
 
 import cn.hassan.entities.Dept;
 import cn.hassan.entities.DeptExample;
@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DeptMapper {
+
     int countByExample(DeptExample example);
 
     int deleteByExample(DeptExample example);

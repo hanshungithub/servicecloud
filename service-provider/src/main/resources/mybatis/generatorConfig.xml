@@ -37,7 +37,7 @@
         </sqlMapGenerator>
 
         <!--指定dao接口生成的位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hassan.serviceprovider.mapper" targetProject="./src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hassan.serviceprovider.site.mapper" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
