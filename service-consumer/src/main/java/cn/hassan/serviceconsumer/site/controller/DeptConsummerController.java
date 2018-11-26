@@ -26,4 +26,8 @@ public class DeptConsummerController {
         return restTemplate.getForEntity("http://127.0.0.1:8080/dept/findDept/" + id, Dept.class);
     }
 
+    @RequestMapping(value = "/consumer/dept/discovery")
+    public Object discovery() {
+        return restTemplate.getForObject("http://127.0.0.1:8080" + "/dept/discovery", Object.class);
+    }
 }
