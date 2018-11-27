@@ -17,17 +17,19 @@ public class DeptConsummerController {
     @Autowired
     private RestTemplate restTemplate;
 
+    private static final String REST_URL_PREFIX = "http://SERVICE-PROVIDER";
+
     @ApiOperation(value = "consumer 获取部门信息")
     @ApiImplicitParams(
             @ApiImplicitParam(name = "id", value = "部门ID", required = true, dataType = "Long", paramType = "path")
     )
     @RequestMapping(value = "/consumer/findDept/{id}")
     public ResponseEntity<Dept> findDeptById(@PathVariable Long id) {
-        return restTemplate.getForEntity("http://127.0.0.1:8080/dept/findDept/" + id, Dept.class);
+        return restTemplate.getForEntity(REST_URL_PREFIX + "/dept/findDept/" + id, Dept.class);
     }
 
     @RequestMapping(value = "/consumer/dept/discovery")
     public Object discovery() {
-        return restTemplate.getForObject("http://127.0.0.1:8080" + "/dept/discovery", Object.class);
+        return restTemplate.getForObject(REST_URL_PREFIX + "/dept/discovery", Object.class);
     }
 }
